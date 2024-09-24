@@ -1,0 +1,20 @@
+const car = {
+    marka: 'Toyota',
+    model: 'Avalon',
+    year: 2016,
+    avarageSpeed: 100,
+};
+
+function showCarInfo() {
+    console.log(` Marka: ${car.marka}\n Model: ${car.model}\n Year: ${car.year}\n Avarage speed: ${car.avarageSpeed}`);
+};
+showCarInfo()
+
+function timeDistantion(distantion, car){
+    let result = distantion / car.avarageSpeed;
+    const breaks = Math.floor(result / 4);
+    result += breaks;
+    return result;
+};
+const distantion = parseFloat(prompt("Entered distance - "));
+console.log(`Time needed: ${timeDistantion(distantion, car)} hours`);

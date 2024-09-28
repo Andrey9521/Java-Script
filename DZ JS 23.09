@@ -1,3 +1,4 @@
+1)
 const car = {
     marka: 'Toyota',
     model: 'Avalon',
@@ -18,3 +19,47 @@ function timeDistantion(distantion, car){
 };
 const distantion = parseFloat(prompt("Entered distance - "));
 console.log(`Time needed: ${timeDistantion(distantion, car)} hours`);
+
+2)
+class Fraction {
+    constructor(numerator, denumerator) {
+        this.numerator = numerator;
+        this.denumerator = denumerator;
+    }
+    add(fraction){
+        const newNumerator = this.numerator * fraction.denumerator + fraction.numerator * this.denumerator;
+        const newDenumerator = this.denumerator * fraction.denumerator
+        return new Fraction(newNumerator, newDenumerator).reduce();
+    }
+    subtract(fraction){
+        const newNumerator = this.numerator * fraction.denumerator - fraction.numerator * this.denumerator;
+        const newDenumerator = this.denumerator * fraction.denumerator;
+        return new Fraction(newNumerator, newDenumerator).reduce();
+    }
+    multiply(fraction){
+        const newNumerator = this.numerator * fraction.numerator;
+        const newDenumerator = this.denumerator * fraction.denumerator;
+        return new Fraction(newNumerator, newDenumerator).reduce();
+    }
+    divide(fraction){
+        const newNumerator = this.numerator * fraction.denumerator;
+        const newDenumerator = this.denumerator * fraction.numerator;
+        return new Fraction(newNumerator, newDenumerator).reduce();
+    }
+    reduce(){
+        const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+        const comDiv = gcd(this.numerator, this.denumerator);
+        return new Fraction(this.numerator / comDiv, this.denumerator / comDiv);
+    }
+    showFr(){
+        return `${this.numerator}/${this.denumerator}`
+    }
+}
+
+const fraction1 = new Fraction(4, 5);
+const fraction2 = new Fraction(5, 10);
+
+console.log(`Додавання - ${fraction1.add(fraction2).showFr()}`);
+console.log(`Віднімання - ${fraction1.subtract(fraction2).showFr()}`);
+console.log(`Множення - ${fraction1.multiply(fraction2).showFr()}`);
+console.log(`ДІлення - ${fraction1.divide(fraction2).showFr()}`);
